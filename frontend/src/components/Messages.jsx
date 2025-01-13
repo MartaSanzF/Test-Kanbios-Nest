@@ -5,7 +5,9 @@ import { jwtDecode } from "jwt-decode";
 import Message from "./Message";
 import MessageInput from './MessageInput';
 
-const socket = openSocket("http://localhost:3000");
+const socket = openSocket("http://localhost:3000", {
+    transports: ["websocket"],
+});
 
 function Messages() {
 
@@ -39,12 +41,12 @@ function Messages() {
             setMessages((prevMessages) => [
                 ...prevMessages,
                 {
-                    _id: data.savedMessage._id,
-                    content: data.savedMessage.content,
-                    senderName: data.savedMessage.senderName,
-                    senderId: data.savedMessage.senderId,
-                    status: data.savedMessage.status,
-                    createdAt: new Date(data.savedMessage.createdAt).toLocaleString(),
+                    _id: data._id,
+                    content: data.content,
+                    senderName: data.senderName,
+                    senderId: data.senderId,
+                    status: data.status,
+                    createdAt: new Date(data.createdAt).toLocaleString(),
                 },
             ]);
 
@@ -80,7 +82,7 @@ function Messages() {
                 }
 
                 // Transform dates
-                const formattedMessages = data.messages.map((message) => ({
+                const formattedMessages = data.map((message) => ({
                     ...message,
                     createdAt: new Date(message.createdAt).toLocaleString(),
                 }));

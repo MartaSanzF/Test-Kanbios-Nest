@@ -1,24 +1,23 @@
-# Étape 1 : Utiliser une image Node.js officielle
-FROM node:18
+# Étape 1 : Utiliser une image de Node.js officielle comme base
+FROM node:16-alpine
 
-# Définir le répertoire de travail
+# Étape 2 : Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copier package.json et package-lock.json (ou yarn.lock)
+# Étape 3 : Copier les fichiers de l'application
 COPY package*.json ./
 
-# Installer les dépendances de développement
+# Étape 4 : Installer les dépendances
 RUN npm install
 
-# Copier le reste des fichiers du projet
+# Étape 5 : Copier le reste du code
 COPY . .
 
+# Étape 6 : Construire l'application Nest.js
 RUN npm run build
 
-# Exposer le port sur lequel l'application écoute
+# Étape 7 : Exposer le port utilisé par Nest.js
 EXPOSE 3000
 
-# Démarrer l'application avec nodemon pour développement
-CMD ["node", "dist/index.js"]
-
-
+# Étape 8 : Définir la commande de démarrage
+CMD ["npm", "run", "start:dev"]

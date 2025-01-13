@@ -38,7 +38,7 @@ function AdminUsers() {
                 throw new Error(data.message || "Something went wrong!");
             }
 
-            setUsers(data.users);
+            setUsers(data);
 
         } catch (err) {
 
@@ -94,7 +94,7 @@ function AdminUsers() {
                 throw new Error(data.message || "Something went wrong!");
             }
 
-            setUser(data.user);
+            setUser(data);
 
         } catch (err) {
 
