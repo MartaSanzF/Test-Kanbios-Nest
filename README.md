@@ -1,11 +1,9 @@
-# Test-Kanbios: Real-time Messaging with Admin Management
+# Test-Kanbios-Nest: Real-time Messaging with Admin Management
 
 ## Description
-This project is a full-stack application built with **React** for the frontend and **Node.js** for the backend API. It uses **TypeScript** for the server, with **PostgreSQL** for user management and **MongoDB** for storing messages for the real-time chat functionality. The backend includes a full authentication system (JWT-based), and a **WebSocket** server for real-time messaging.
+This project is a full-stack application built with **React** for the frontend and **Nest** for the backend API. It uses **PostgreSQL** for user management and **MongoDB** for storing messages for the real-time chat functionality. The backend includes a full authentication system (JWT-based), and a **WebSocket** server for real-time messaging.
 
 The first user created will automatically be assigned the **admin** role, and the admin can manage user accounts (e.g., creating, updating, and deleting users). All passwords are securely hashed using **bcrypt** before storing them in the PostgreSQL database.
-
-API documentation is provided via **Swagger**.
 
 ## Features
 - **React frontend** with real-time updates using WebSockets
@@ -15,7 +13,6 @@ API documentation is provided via **Swagger**.
 - **MongoDB** for storing chat messages
 - **Admin role** to manage users
 - **WebSocket** support for real-time messaging
-- **Swagger API documentation** for easy access to API endpoints
 
 ## Technologies Used
 - **Frontend**: React, WebSockets
@@ -24,7 +21,6 @@ API documentation is provided via **Swagger**.
   - **PostgreSQL**: User management (storing user details and roles)
   - **MongoDB**: Real-time chat messages
 - **Docker**: For containerizing both the frontend and backend
-- **Swagger**: For API documentation
 - **bcrypt**: For securely hashing user passwords
 
 ## Prerequisites
@@ -37,7 +33,7 @@ API documentation is provided via **Swagger**.
 ### 1. Clone the Repository
 First, clone the repository to your local machine:
 ```bash
-git clone https://github.com/MartaSanzF/Test-Kanbios.git
+git clone https://github.com/MartaSanzF/Test-Kanbios-Nest.git
 ```
 ### 2. Run the application
 Run the application with Docker
@@ -62,11 +58,6 @@ When you first run the application, create a user with the following details:
 
 This user will automatically be assigned the admin role. The admin can then manage other user accounts.
 
-## API Documentation
-The backend API is documented using Swagger. You can view the API documentation by visiting:
-
-http://localhost:3000/api-docs
-
 ## Endpoints
 Here are some of the key API endpoints available in the backend:
 
@@ -81,23 +72,6 @@ Here are some of the key API endpoints available in the backend:
 
 ## Real-time Messaging
 The chat feature uses **WebSockets** for real-time communication. After logging in, users can send and receive messages instantly. The chat system stores messages in MongoDB and is connected to the frontend using WebSocket.
-
-## Tests unitaires
-
-Tests for the backend have been written using **Jest**. These tests cover various API endpoints to ensure proper functionality and error handling.
-
-For the frontend, **Jest** and **React Testing Library** have been used to test the React components.
-
-To run the backend tests:
-```bash
-cd backend
-npm run test
-```
-To run the frontend tests:
-```bash
-cd frontend
-npm run test
-```
 
 ## Security Considerations
 
