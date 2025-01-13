@@ -15,6 +15,5 @@ export class SignupDto {
   @IsString()
   @Transform(({ value }) => value.trim())
   @IsNotEmpty({ message: 'Name is required.' })
-  @Length(3, 50, { message: 'Name must be between 3 and 50 characters.' })
   name: string;
 }

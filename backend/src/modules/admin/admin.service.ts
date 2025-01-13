@@ -89,11 +89,13 @@ export class AdminService {
         if (password === '') {
             password = user.password;
         } else {
-            if (password.length < 5) {
+            let newPassword = password.trim();
+
+            if (newPassword.length < 5) {
                 throw new HttpException('Password must be at least 5 characters long.', HttpStatus.BAD_REQUEST);
             }
 
-            const hashedPassword = await bcrypt.hash(password, 12);
+            const hashedPassword = await bcrypt.hash(newPassword, 12);
             user.password = hashedPassword;
 
         }
